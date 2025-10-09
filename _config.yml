@@ -23,7 +23,7 @@ repository               : "VictorMorand/VictorMorand.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.jpg"
+  avatar           : "profile.png"
   name             : "Victor Morand" # Your name
   pronouns         : # example: "she/her"  
   bio              : "PhD student in Computer Science at Sorbonne University."
