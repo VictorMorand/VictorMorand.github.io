@@ -15,7 +15,7 @@
   }
 
   a {
-    text-decoration: underline;
+    // text-decoration: underline;
 
     &:hover {
       text-decoration: underline;
@@ -74,14 +74,47 @@
   }
 }
 
-.archive__item:hover {
-  .archive__item-teaser {
-    box-shadow: 0 0 10px rgba(#000, 0.25);
-  }
+// .archive__item:hover {
+//   .archive__item-teaser {
+//     box-shadow: 0 0 10px rgba(#000, 0.25);
+//   }
+// }
 
-  .archive__item-title {
-    text-decoration: underline;
-  }
+// Buttons 
+.button-container {
+  display: flex;
+  justify-content: center; /* This is the magic part that centers everything */
+  align-items: center;
+  gap: 10px; /* This adds a nice space between the buttons */
+}
+
+.btn--round {
+  display: inline-block;
+  padding: 6px 15px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.9em;
+  margin-right: 8px;
+  margin-top: 1px;
+  color: #ffffff; /* Set text color to white for better contrast */
+  transition: opacity 0.2s;
+}
+
+.btn--round:hover {
+  opacity: 0.85; /* A nice hover effect for any color */
+}
+
+/* --- New Styles --- */
+
+/* ArXiv button: Red */
+.btn--arxiv {
+  background-color: #b31b1b; /* This is the official ArXiv red */
+}
+
+/* Code button: Black */
+.btn--code {
+  background-color: #111; /* A dark GitHub-style black */
 }
 
 
