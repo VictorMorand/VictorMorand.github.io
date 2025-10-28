@@ -14,3 +14,5 @@ Hi ! I'm Victor, currently PhD Student working in the [MLIA](https://www.isir.up
 My thesis is entitled _Domain adaptation in Pretrained Language Models, Applications to information retrieval and Conversational search_.
 
 Put more simply, we aim at improving information acess using the amazing ability of Pretrained Language Models to _understand_ text, while they're not that amazing at manipulating factual information yet...
+
+### 📄 See my [publications](https://victormorand.github.io/publications/)
