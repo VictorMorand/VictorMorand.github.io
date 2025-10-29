@@ -19,13 +19,16 @@ authors: Victor Morand, Nadi Tomeh, Josiane Mothe, Benjamin Piwowarski
 
 ## What ToMMeR Does
 
-[![Try in Colab !](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/VictorMorand/llm2ner/blob/main/Notebooks/ToMMeR_Demo.ipynb)
+
+➡️ Try if yourself ! [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/VictorMorand/llm2ner/blob/main/Notebooks/ToMMeR_Demo.ipynb)
 
 ToMMeR is a lightweight probing model extracting emergent mention detection capabilities from early layers representations of any LLM backbone. Trained to generalize LLM annotated data,
 ToMMeR achieves high Zero Shot recall across a wide set of 13 NER benchmarks.
 
 Here is an example output of a ToMMeR model trained on representation for layer 6 of Llama3.2-1B, you can try it on Colab or directly download it from [🤗hugginface](https://huggingface.co/llm2ner/ToMMeR-Llama-3.2-1B_L6_R64).
 We trained a lot more models across many other layers and backbones, see the related [🤗collection](https://huggingface.co/llm2ner).
+
+
 <div>
     <span class="tex2jax_ignore">
         <div class="spans" style="line-height: 2.5; direction: ltr">
@@ -201,9 +204,74 @@ We trained a lot more models across many other layers and backbones, see the rel
             .
         </div>
     </span>
+    <div class="legend">
+            <!-- <div class="legend-title">Framework Overview</div> -->
+
+            <div class="legend-items">
+                <div class="legend-item">
+                    <div class="legend-box gold-label">GOLD</div>
+                    <span>Ground truth entity mentions from LLM-labeled data</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-box pred-label">PRED</div>
+                    <span>Predicted entity mentions by ToMMeR</span>
+                </div>
+            </div>
+    </div>
+    <style>
+        .legend {
+            background: rgba(173, 216, 230, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border-left: 4px solid #3498db;
+            font-size: 13px;
+            }
+        
+        .legend-title {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        
+        .legend-items {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .legend-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .legend-box {
+            padding: 3px 6px;
+            border-radius: 2px;
+            flex-shrink: 0;
+            font-size: 10px;
+            font-weight: bold;
+            color: #000;
+            line-height: 1;
+        }
+        
+        .gold-label {
+            background: gold;
+        }
+        
+        .pred-label {
+            background: lightblue;
+        }
+    </style>
 </div>
 
-### ToMMeR Span Probabilities and Attention scores 
+
+### ToMMeR Span Probabilities and Attention scores
+
+ToMMeR bases its predictions primarily on a learned self-attention layer, we leverage [circuitsvis](https://transformerlensorg.github.io/CircuitsVis) to visualize the attention scores along with the span scores.
+
 <div>
 <div id="circuits-vis-9e5b1ce8-419d" style="margin: 15px 0;"/>
     <script crossorigin type="module">
