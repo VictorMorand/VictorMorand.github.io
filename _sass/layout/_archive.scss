@@ -90,13 +90,13 @@
 
 .btn--round {
   display: inline-block;
-  padding: 6px 15px;
+  padding: 2px 15px;
   border-radius: 999px;
   text-decoration: none;
   font-weight: bold;
   font-size: 0.9em;
   margin-right: 8px;
-  margin-top: 1px;
+  margin-top: 0px;
   color: #ffffff; /* Set text color to white for better contrast */
   transition: opacity 0.2s;
 }
@@ -115,6 +115,16 @@
 /* Code button: Black */
 .btn--code {
   background-color: #111; /* A dark GitHub-style black */
+}
+
+/* Poster button: Green */
+.btn--poster {
+  background-color: #f39c12;
+}
+
+/* Slides button: Orange */
+.btn--slides {
+  background-color: #27ae60;
 }
 
 

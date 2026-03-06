@@ -6,9 +6,10 @@ paperurl: https://arxiv.org/abs/2510.09421
 codeurl: https://github.com/VictorMorand/EntityRepresentations
 date: 2025-10-10
 permalink: 
-excerpt: ''
+excerpt: 'We investigate how Large Language Models internally represent entities by introducing entity mention reconstruction as a novel framework for studying how LLMs encode and manipulate entities.'
 venue: 'BlackBoxNLP@EMNLP'
 slidesurl: 
+posterurl: 2025-PosterEMNLP.pdf
 bibtexurl: 
 citation: 
 authors: Victor Morand, Josiane Mothe, Benjamin Piwowarski

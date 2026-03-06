@@ -1,4 +1,5 @@
 ---
+layout: archive
 permalink: /
 title: "Victor Morand"
 author_profile: true
@@ -15,4 +16,31 @@ My thesis is entitled _Domain adaptation in Pretrained Language Models, Applicat
 
 Put more simply, we aim at improving information acess using the amazing ability of Pretrained Language Models to _understand_ text, while they're not that amazing at manipulating factual information yet...
 
-### 📄 See my [publications](https://victormorand.github.io/publications/)
+--- 
+## 📄 Publications
+
+{% if site.author.googlescholar %}
+  <div class="wordwrap">You can also find my articles on <a href="{{site.author.googlescholar}}">my Google Scholar profile</a>.</div>
+{% endif %}
+
+{% include base_path %}
+
+<!-- New style rendering if publication categories are defined -->
+{% if site.publication_category %}
+  {% for category in site.publication_category  %}
+    {% assign title_shown = false %}
+    {% for post in site.publications reversed %}
+      {% if post.category != category[0] %}
+        {% continue %}
+      {% endif %}
+      {% unless title_shown %}
+        {% assign title_shown = true %}
+      {% endunless %}
+      {% include archive-single.html %}
+    {% endfor %}
+  {% endfor %}
+{% else %}
+  {% for post in site.publications reversed %}
+    {% include archive-single.html %}
+  {% endfor %}
+{% endif %}

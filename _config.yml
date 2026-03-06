@@ -30,7 +30,7 @@ author:
   location         : "Paris, France"
   employer         : "ISIR - Sorbonne University"
   uri              : # URL
-  email            : "none@example.org" 
+  email            : # none@example.org 
 
   # Academic websites
   academia         : # URL

@@ -46,7 +46,7 @@ layout: default
         {% if page.collection == 'teaching' %}
         <p> {{ page.type }}, <i>{{ page.venue }}</i>, {{ page.date | default: "1900-01-01" | date: "%Y" }} </p>
         {% elsif page.venue and page.date %}
-        <p>Published in <i>{{ page.venue }}</i>, {{ page.date | default: "1900-01-01" | date: "%Y" }} </p>
+        <p><i>{{ page.venue }}</i>, {{ page.date | default: "1900-01-01" | date: "%Y" }} </p>
         {% elsif page.date %}
         <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{
             site.data.ui-text[site.locale].date_label | default: "Published:" }}</strong> <time
@@ -62,7 +62,14 @@ layout: default
           <a href="{{ page.codeurl }}" class="btn btn--round btn--code"><i class="fab fa-github"></i> Code</a>
           {% endif %}
           {% if page.slidesurl %}
-          <a href="{{ page.slidesurl }}" class="btn btn--round">📊 Slides</a>
+          <a href="{{ page.slidesurl }}" class="btn btn--round btn--slides">📊 Slides</a>
+          {% endif %}
+          {% if page.posterurl %}
+            {% if page.posterurl contains "://" %}
+              <a href="{{ page.posterurl }}" class="btn btn--round btn--poster">🪧 Poster</a>
+            {% else %}
+              <a href="{{ page.posterurl | prepend: "/files/" | prepend: base_path }}" class="btn btn--round btn--poster">🖼️ Poster</a>
+            {% endif %}
           {% endif %}
         </div>
       </header>

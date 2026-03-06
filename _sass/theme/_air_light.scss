@@ -38,6 +38,7 @@ $sidebar-screen-min-width   : 1024px;
 :root {
     --global-base-color                 : #{$background};
     --global-bg-color                   : #{$background};
+    --global-masthead-bg-color          : #{$text};
     --global-footer-bg-color            : #{$footer};
     --global-border-color               : #{$light-primary-color};
     --global-dark-border-color          : #{$background-light};
@@ -47,8 +48,8 @@ $sidebar-screen-min-width   : 1024px;
     --global-link-color                 : #{$link};
     --global-link-color-hover           : #{$link-dark};
     --global-link-color-visited         : #{$link-light};
-    --global-masthead-link-color        : #{$text};
-    --global-masthead-link-color-hover  : #{$link};
+    --global-masthead-link-color        : #{$background-lighter};
+    --global-masthead-link-color-hover  : #{$primary-color};
     --global-text-color                 : #{$text};
     --global-text-color-light           : #{$light-primary-color};
     --global-thead-color                : #{$background-lighter};

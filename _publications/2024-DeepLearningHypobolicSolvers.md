@@ -6,7 +6,7 @@ paperurl: https://www.sciencedirect.com/science/article/pii/S0021999124003632
 codeurl: https://github.com/VictorMorand/FVschemesOptim
 date: 2024-10-10
 permalink: 
-excerpt: ''
+excerpt: 'We study the numerical approximation of scalar conservation laws by computational optimization of the numerical flux function in a first-order finite volume method.'
 venue: Journal of Computational Physics
 slidesurl: 
 bibtexurl: 
