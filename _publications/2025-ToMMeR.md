@@ -7,7 +7,7 @@ codeurl: https://github.com/VictorMorand/llm2ner
 date: 2025-10-28
 permalink: 
 excerpt: 'We introduce ToMMeR, a lightweight model probing mention detection capabilities from early LLM layers, achieving high zero-shot recall across diverse benchmarks.'
-venue:
+venue: ACL 2026
 slidesurl: 
 bibtexurl: 
 citation: 
