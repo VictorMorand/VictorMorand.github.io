@@ -12,6 +12,7 @@
     timelineItems.forEach(function (item) {
       const header = item.querySelector('.pub-timeline__header');
       const dot = item.querySelector('.pub-timeline__dot');
+      const date = item.querySelector('.pub-timeline__date');
 
       function toggleItem(e) {
         // Avoid toggling if an anchor or button inside was explicitly clicked
@@ -48,6 +49,10 @@
 
       if (dot) {
         dot.addEventListener('click', toggleItem);
+      }
+
+      if (date) {
+        date.addEventListener('click', toggleItem);
       }
     });
   }

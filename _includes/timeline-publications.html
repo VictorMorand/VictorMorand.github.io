@@ -9,33 +9,40 @@
     {% endif %}
 
     <div class="pub-timeline__item">
-      <div class="pub-timeline__dot" title="Toggle publication details" aria-hidden="true"></div>
+      <!-- Left Column: Date Badge -->
+      <div class="pub-timeline__date-col">
+        <span class="pub-timeline__date" title="Published {{ post.date | default: '1900-01-01' | date: '%B %Y' }}">
+          <i class="fas fa-calendar-alt" aria-hidden="true" style="margin-right: 4px; font-size: 0.85em; opacity: 0.85;"></i>
+          {{ post.date | default: "1900-01-01" | date: "%b %Y" }}
+        </span>
+      </div>
 
+      <!-- Center Axis Column: Dot marker & Connecting line -->
+      <div class="pub-timeline__axis-col">
+        <div class="pub-timeline__dot" title="Toggle publication details" aria-hidden="true"></div>
+      </div>
+
+      <!-- Right Column: Card with Title + inline Conf badge + unfolded details -->
       <div class="pub-timeline__card">
         <div class="pub-timeline__header" role="button" tabindex="0" aria-expanded="false" aria-label="Toggle details for {{ title }}">
-          <div class="pub-timeline__top-row">
-            <div class="pub-timeline__badges">
-              <span class="pub-timeline__date">
-                <i class="fas fa-calendar-alt" aria-hidden="true" style="margin-right: 4px; font-size: 0.85em; opacity: 0.85;"></i>
-                {{ post.date | default: "1900-01-01" | date: "%b %Y" }}
-              </span>
+          <div class="pub-timeline__header-content">
+            <span class="pub-timeline__title">
+              <a href="{% if post.link %}{{ post.link }}{% else %}{{ base_path }}{{ post.url }}{% endif %}" class="pub-timeline__title-link">{{ title }}</a>
               {% if post.venue %}
                 <span class="pub-timeline__venue">{{ post.venue }}</span>
               {% endif %}
-            </div>
+            </span>
             <span class="pub-timeline__indicator" aria-hidden="true">
               <i class="fas fa-chevron-down"></i>
             </span>
           </div>
-
-          <div class="pub-timeline__title">{{ title }}</div>
         </div>
 
         <div class="pub-timeline__details">
           <div class="pub-timeline__details-inner">
             {% if post.authors %}
               <div class="pub-timeline__authors">
-                <strong>Authors:</strong> {{ post.authors }}
+                {{ post.authors }}
               </div>
             {% endif %}
 
@@ -58,6 +65,8 @@
               {% endif %}
             </div>
 
+            <div class="pub-timeline__divider"></div>
+
             {% if post.excerpt %}
               <div class="pub-timeline__excerpt">
                 {{ post.excerpt | markdownify }}
@@ -66,7 +75,7 @@
 
             {% if post.url %}
               <div class="pub-timeline__more">
-                <a href="{{ base_path }}{{ post.url }}">See More &rarr;</a>
+                <a href="{{ base_path }}{{ post.url }}">Read full article &rarr;</a>
               </div>
             {% endif %}
           </div>

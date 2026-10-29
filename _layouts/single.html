@@ -45,8 +45,21 @@ layout: default
 
         {% if page.collection == 'teaching' %}
         <p> {{ page.type }}, <i>{{ page.venue }}</i>, {{ page.date | default: "1900-01-01" | date: "%Y" }} </p>
-        {% elsif page.venue and page.date %}
-        <p><i>{{ page.venue }}</i>, {{ page.date | default: "1900-01-01" | date: "%Y" }} </p>
+        {% elsif page.collection == 'publications' or page.venue and page.date %}
+        <div class="pub-badge-container">
+          {% if page.date %}
+          <span class="pub-badge--date">
+            <i class="fas fa-calendar-alt" aria-hidden="true" style="margin-right: 4px; font-size: 0.85em; opacity: 0.85;"></i>
+            {{ page.date | default: "1900-01-01" | date: "%b %Y" }}
+          </span>
+          {% endif %}
+          {% if page.venue %}
+          <span class="pub-badge--venue">{{ page.venue }}</span>
+          {% endif %}
+          {% if page.authors %}
+          <span class="pub-page__authors">{{ page.authors }}</span>
+          {% endif %}
+        </div>
         {% elsif page.date %}
         <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{
             site.data.ui-text[site.locale].date_label | default: "Published:" }}</strong> <time
@@ -54,7 +67,7 @@ layout: default
             }}</time></p>
         {% endif %}
 
-        <div class="button-container">
+        <div class="button-container" style="justify-content: flex-start; margin-top: 0.5em; margin-bottom: 1em;">
           {% if page.paperurl %}
           <a href="{{ page.paperurl }}" class="btn btn--round btn--arxiv">📄 Paper</a>
           {% endif %}
