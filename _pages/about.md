@@ -16,30 +16,11 @@ My thesis is entitled _Domain adaptation in Pretrained Language Models, Applicat
 Put more simply, we aim at improving Information Retrieval and access using the emerging ability of Pretrained Language Models to _understand_ text.
 
 --- 
-## 📄 Last Publications
+## 📄 Featured Publications
 
 {% if site.author.googlescholar %}
   <div class="wordwrap">You can also find my articles on my <a href="{{site.author.googlescholar}}"> 🎓 Google Scholar</a>.</div>
 {% endif %}
 
 {% include base_path %}
-
-<!-- New style rendering if publication categories are defined -->
-{% if site.publication_category %}
-  {% for category in site.publication_category  %}
-    {% assign title_shown = false %}
-    {% for post in site.publications reversed %}
-      {% if post.category != category[0] %}
-        {% continue %}
-      {% endif %}
-      {% unless title_shown %}
-        {% assign title_shown = true %}
-      {% endunless %}
-      {% include archive-single.html %}
-    {% endfor %}
-  {% endfor %}
-{% else %}
-  {% for post in site.publications reversed %}
-    {% include archive-single.html %}
-  {% endfor %}
-{% endif %}
+{% include timeline-publications.html %}

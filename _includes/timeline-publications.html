@@ -1,0 +1,77 @@
+{% include base_path %}
+
+<div class="pub-timeline">
+  {% for post in site.publications reversed %}
+    {% if post.id %}
+      {% assign title = post.title | markdownify | remove: "<p>" | remove: "</p>" %}
+    {% else %}
+      {% assign title = post.title %}
+    {% endif %}
+
+    <div class="pub-timeline__item">
+      <div class="pub-timeline__dot" title="Toggle publication details" aria-hidden="true"></div>
+
+      <div class="pub-timeline__card">
+        <div class="pub-timeline__header" role="button" tabindex="0" aria-expanded="false" aria-label="Toggle details for {{ title }}">
+          <div class="pub-timeline__top-row">
+            <div class="pub-timeline__badges">
+              <span class="pub-timeline__date">
+                <i class="fas fa-calendar-alt" aria-hidden="true" style="margin-right: 4px; font-size: 0.85em; opacity: 0.85;"></i>
+                {{ post.date | default: "1900-01-01" | date: "%b %Y" }}
+              </span>
+              {% if post.venue %}
+                <span class="pub-timeline__venue">{{ post.venue }}</span>
+              {% endif %}
+            </div>
+            <span class="pub-timeline__indicator" aria-hidden="true">
+              <i class="fas fa-chevron-down"></i>
+            </span>
+          </div>
+
+          <div class="pub-timeline__title">{{ title }}</div>
+        </div>
+
+        <div class="pub-timeline__details">
+          <div class="pub-timeline__details-inner">
+            {% if post.authors %}
+              <div class="pub-timeline__authors">
+                <strong>Authors:</strong> {{ post.authors }}
+              </div>
+            {% endif %}
+
+            <div class="button-container pub-timeline__buttons">
+              {% if post.paperurl %}
+                <a href="{{ post.paperurl }}" class="btn btn--round btn--arxiv" target="_blank" rel="noopener noreferrer">📄 Paper</a>
+              {% endif %}
+              {% if post.codeurl %}
+                <a href="{{ post.codeurl }}" class="btn btn--round btn--code" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> Code</a>
+              {% endif %}
+              {% if post.slidesurl %}
+                <a href="{{ post.slidesurl }}" class="btn btn--round btn--slides" target="_blank" rel="noopener noreferrer">📊 Slides</a>
+              {% endif %}
+              {% if post.posterurl %}
+                {% if post.posterurl contains "://" %}
+                  <a href="{{ post.posterurl }}" class="btn btn--round btn--poster" target="_blank" rel="noopener noreferrer">🖼️ Poster</a>
+                {% else %}
+                  <a href="{{ post.posterurl | prepend: "/files/" | prepend: base_path }}" class="btn btn--round btn--poster" target="_blank" rel="noopener noreferrer">🖼️ Poster</a>
+                {% endif %}
+              {% endif %}
+            </div>
+
+            {% if post.excerpt %}
+              <div class="pub-timeline__excerpt">
+                {{ post.excerpt | markdownify }}
+              </div>
+            {% endif %}
+
+            {% if post.url %}
+              <div class="pub-timeline__more">
+                <a href="{{ base_path }}{{ post.url }}">See More &rarr;</a>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>

@@ -1,0 +1,296 @@
+/* ==========================================================================
+   PUBLICATIONS TIMELINE
+   ========================================================================== */
+
+.pub-timeline {
+  position: relative;
+  margin: 1.5em 0 2.5em;
+  padding-left: 2.2rem;
+}
+
+.pub-timeline__item {
+  position: relative;
+  margin-bottom: 1.5em;
+
+  /* Continuous vertical timeline axis connecting this dot to the next dot */
+  &::before {
+    content: "";
+    position: absolute;
+    left: calc(-2.2rem + 8px);   /* Center of the 18px dot */
+    top: 17px;                   /* Aligned with center of the dot / badges row */
+    bottom: calc(-1.5em - 17px); /* Extends directly to the next dot center */
+    width: 2px;
+    background-color: var(--global-border-color);
+    opacity: 0.55;
+    transition: opacity 0.25s ease, background-color 0.25s ease;
+    z-index: 1;
+  }
+
+  /* The timeline line terminates cleanly at the last publication dot */
+  &:last-child {
+    margin-bottom: 0.5em;
+
+    &::before {
+      display: none;
+    }
+  }
+}
+
+/* Timeline marker point / dot */
+.pub-timeline__dot {
+  position: absolute;
+  left: -2.2rem;
+  top: 8px; /* Perfectly aligned vertically with the badges row */
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: var(--global-bg-color);
+  border: 3px solid var(--global-border-color);
+  box-shadow: 0 0 0 3px var(--global-bg-color);
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+              background-color 0.25s ease,
+              border-color 0.25s ease,
+              box-shadow 0.25s ease;
+  z-index: 2;
+  cursor: pointer;
+}
+
+/* Unified card block encompassing header and unfolded infos */
+.pub-timeline__card {
+  position: relative;
+  padding: 6px 12px 6px 12px;
+  border-radius: 0 6px 6px 0;
+  border-left: 3px solid transparent; /* Keeps layout stable, becomes handle when unfolded */
+  transition: background-color 0.25s ease,
+              border-color 0.25s ease,
+              box-shadow 0.25s ease;
+}
+
+/* Header block containing Badges and Title */
+.pub-timeline__header {
+  display: block;
+  cursor: pointer;
+  user-select: none;
+
+  &:focus-visible {
+    outline: 2px solid var(--global-link-color);
+    outline-offset: 2px;
+  }
+}
+
+/* Row 1: Badges on the left, expand chevron on the right */
+.pub-timeline__top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.pub-timeline__badges {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  flex-shrink: 0;
+}
+
+.pub-timeline__date {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.8em;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--global-text-color-light);
+  background-color: rgba(127, 127, 127, 0.12);
+  padding: 2px 7px;
+  border-radius: 4px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  line-height: 1.3;
+}
+
+/* Venue badge on the right of the date badge: same style but a bit smaller */
+.pub-timeline__venue {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.72em;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--global-text-color-light);
+  background-color: rgba(127, 127, 127, 0.12);
+  padding: 2px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  line-height: 1.3;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.pub-timeline__indicator {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.75em;
+  color: var(--global-text-color-light);
+  padding-left: 0.5rem;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), color 0.2s ease;
+}
+
+/* Row 2: Title ALWAYS positioned below the badges */
+.pub-timeline__title {
+  display: block;
+  margin-top: 0.4em;
+  font-size: 1.05em;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--global-text-color);
+  transition: color 0.2s ease;
+}
+
+/* Unfolding drawer container */
+.pub-timeline__details {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.25s ease;
+  opacity: 0;
+}
+
+/* Inner content seamlessly unified within the card */
+.pub-timeline__details-inner {
+  overflow: hidden;
+  margin-top: 0.6em;
+  padding-top: 0.65em;
+  border-top: 1px dashed rgba(127, 127, 127, 0.22);
+}
+
+.pub-timeline__authors {
+  font-size: 0.9em;
+  line-height: 1.45;
+  color: var(--global-text-color);
+  margin-bottom: 0.6em;
+}
+
+.pub-timeline__buttons {
+  justify-content: flex-start !important;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0.5em 0 0.7em;
+}
+
+.pub-timeline__buttons .btn--round {
+  margin-right: 0;
+  font-size: 0.85em;
+  padding: 3px 12px;
+}
+
+.pub-timeline__excerpt {
+  font-size: 0.88em;
+  font-style: italic;
+  line-height: 1.45;
+  color: var(--global-text-color-light);
+  margin: 0.5em 0;
+
+  p {
+    margin: 0 0 0.4em;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.pub-timeline__more {
+  margin-top: 0.6em;
+  font-size: 0.85em;
+  font-weight: 600;
+
+  a {
+    color: var(--global-link-color);
+    text-decoration: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--global-link-color-hover);
+      text-decoration: underline;
+    }
+  }
+}
+
+/* Active / Unfolded Styles (Desktop Hover & Mobile/Pinned Click) */
+@mixin pub-timeline-active-state {
+  &::before {
+    background-color: var(--global-link-color);
+    opacity: 0.8;
+  }
+
+  .pub-timeline__dot {
+    background-color: var(--global-link-color);
+    border-color: var(--global-link-color);
+    box-shadow: 0 0 0 4px rgba(0, 146, 202, 0.2);
+    transform: scale(1.18);
+  }
+
+  /* Unified block styling: Left handle and background encompass paper + infos */
+  .pub-timeline__card {
+    background-color: rgba(127, 127, 127, 0.08);
+    border-left-color: var(--global-border-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  }
+
+  .pub-timeline__title {
+    color: var(--global-link-color);
+  }
+
+  .pub-timeline__indicator {
+    transform: rotate(180deg);
+    color: var(--global-link-color);
+  }
+
+  .pub-timeline__details {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
+}
+
+/* PC Hover Interaction */
+@media (hover: hover) and (pointer: fine) {
+  .pub-timeline__item:hover {
+    @include pub-timeline-active-state;
+  }
+}
+
+/* Mobile Click / PC Pinned State */
+.pub-timeline__item.is-expanded {
+  @include pub-timeline-active-state;
+}
+
+/* Responsive adjustments for smaller screens */
+@include breakpoint(max-width 600px) {
+  .pub-timeline {
+    padding-left: 1.8rem;
+  }
+
+  .pub-timeline__item {
+    &::before {
+      left: calc(-1.8rem + 6px);
+      top: 15px;
+      bottom: calc(-1.5em - 15px);
+    }
+  }
+
+  .pub-timeline__dot {
+    left: -1.8rem;
+    width: 15px;
+    height: 15px;
+    top: 7px;
+    border-width: 2.5px;
+  }
+
+  .pub-timeline__card {
+    padding: 4px 8px 6px 8px;
+  }
+
+  .pub-timeline__title {
+    font-size: 0.98em;
+  }
+}
