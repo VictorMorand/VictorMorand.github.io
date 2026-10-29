@@ -13,11 +13,10 @@ Hi ! I'm Victor, currently PhD Student working in the [MLIA](https://www.isir.up
 # 🎓 Towards Language models that know what they know
 
 My thesis is entitled _Domain adaptation in Pretrained Language Models, Applications to information retrieval and Conversational search_.
-
-Put more simply, we aim at improving information acess using the amazing ability of Pretrained Language Models to _understand_ text, while they're not that amazing at manipulating factual information yet...
+Put more simply, we aim at improving Information Retrieval and access using the emerging ability of Pretrained Language Models to _understand_ text.
 
 --- 
-## 📄 Publications
+## 📄 Last Publications
 
 {% if site.author.googlescholar %}
   <div class="wordwrap">You can also find my articles on my <a href="{{site.author.googlescholar}}"> 🎓 Google Scholar</a>.</div>

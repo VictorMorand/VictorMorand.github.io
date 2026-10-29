@@ -2,13 +2,14 @@
 title: "ToMMeR -- Efficient Entity Mention Detection from Large Language Models"
 collection: publications
 category: manuscripts
-paperurl: https://arxiv.org/abs/2510.19410
+paperurl: https://aclanthology.org/2026.acl-long.1268/
 codeurl: https://github.com/VictorMorand/llm2ner
 date: 2025-10-28
 permalink: 
 excerpt: 'We introduce ToMMeR, a lightweight model probing mention detection capabilities from early LLM layers, achieving high zero-shot recall across diverse benchmarks.'
-venue: ACL 2026
+venue: ACL 2026 San Diego
 slidesurl: 
+posterurl: 2026-PosterToMMeR.pdf
 bibtexurl: 
 citation: 
 authors: Victor Morand, Nadi Tomeh, Josiane Mothe, Benjamin Piwowarski

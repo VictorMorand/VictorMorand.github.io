@@ -2,7 +2,7 @@
 title: "On the Representations of Entities in Auto-regressive Large Language Models"
 collection: publications
 category: manuscripts
-paperurl: https://arxiv.org/abs/2510.09421
+paperurl: https://aclanthology.org/2025.blackboxnlp-1.25/
 codeurl: https://github.com/VictorMorand/EntityRepresentations
 date: 2025-10-10
 permalink: 
